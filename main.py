@@ -28,6 +28,7 @@ import pytz
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret!"
 socketio = SocketIO(app, cors_allowed_origins='*')
+gmaps_key = ""
 user = {
   "username": "admin",
   "password": "admin1234"
@@ -44,7 +45,7 @@ def index():
     socketio_host = "http://localhost:8080"
     imei_gps = ["ID001", "ID002"]
     access_token = ""
-    return render_template("index.html", imei_gps=imei_gps, access_token=access_token, socketio_host=socketio_host)
+    return render_template("index.html", imei_gps=imei_gps, access_token=access_token, socketio_host=socketio_host, api_key=gmaps_key)
 
 @app.route("/login", methods=["POST"])
 def login():
