@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<script> 
+		var SocketIoHost = {{ socketio_host | tojson }}; // Socket.IO Host
+		var imeiGps = {{ imei_gps | tojson }}; // Get ID from database
+		var accessToken = {{ access_token | tojson }}; // Accesss Token
+	</script>
+	<body>
+		<h1>HK GPS</h1>
+		<div id="googleMap" style="width:100%;height:400px;"></div>
+
+		<!-- Add this library -->
+		<script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+		<script src="{{ url_for('static', filename='maps_socketio.js') }}"></script> <!-- Change src with API url static file -->
+		<script src="https://maps.googleapis.com/maps/api/js?key={{ api_key | tojson }}&callback=initMap" async defer></script>
+	</body>
+</html>
